@@ -10,8 +10,14 @@
             <p style="color: red">{{ session('message') }}</p>
         </div>
     @endif
-    <img width="100" height="100" class="rounded mt-2" src="{{ "/storage/$user->avatar" }}" alt="user-avatar">
-    <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+
+    @if (!auth()->user()->avatar)
+        <img width="100" height="100" class="rounded mt-2" src="{{ url('storage/avatars/no_image.jpg') }}"
+            alt="no-user">
+    @else
+        <img width="100" height="100" class="rounded mt-2" src="{{ "/storage/$user->avatar" }}" alt="user-avatar">
+    @endif
+    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
         {{ __('Add or update user avatar.') }}
     </p>
 
