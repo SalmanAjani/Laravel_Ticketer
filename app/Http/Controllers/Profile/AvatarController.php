@@ -22,6 +22,6 @@ class AvatarController extends Controller
 
         Auth::user()->update(['avatar' => $path]);
 
-        return Redirect::route('profile.edit')->with('message', 'Avatar is updated');
+        return Redirect::route('profile.edit')->with('message', 'Avatar updated successfully!');
     }
 }
