@@ -17,7 +17,7 @@
                     </x-nav-link>
                     <div class="flex flex-col justify-center">
                         <a href="{{ route('ticket.index') }}" class="text-white bg-gray-800 rounded-lg px-4 py-2">
-                            {{ __('Support Ticket') }}
+                            {{ __('All Tickets') }}
                         </a>
                     </div>
                 </div>

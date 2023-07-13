@@ -26,13 +26,18 @@
                             @endif
                         </td>
                         <td class="flex gap-2 justify-center">
-                            <x-primary-button>Edit</x-primary-button>
-                            <x-primary-button>Delete</x-primary-button>
+                            <a href="{{ route('ticket.edit', $ticket->id) }}">
+                                <x-primary-button>Edit</x-primary-button>
+                            </a>
+                            <form action="{{ route('ticket.destroy', $ticket->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <x-primary-button>Delete</x-primary-button>
+                            </form>
                         </td>
                     </tr>
                 </tbody>
             </table>
-
         </div>
     </div>
 </x-app-layout>

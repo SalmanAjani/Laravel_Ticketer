@@ -11,6 +11,7 @@ class Textarea extends Component
     /**
      * Create a new component instance.
      */
+
     public $value = '';
 
     public function __construct($value)
