@@ -1,8 +1,10 @@
 <x-app-layout>
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
         <h1 class="text-red-500 text-xl font-bold">{{ $ticket->title }}</h1>
+
         <div
             class="w-full sm:max-w-4xl mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg relative">
+
             <table class="table-auto w-full text-center ">
                 <thead>
                     <th>Description</th>
@@ -38,6 +40,11 @@
                     </tr>
                 </tbody>
             </table>
+
+        </div>
+        <div class="mt-4 text-left w-6/12">
+            <x-primary-button>Accept</x-primary-button>
+            <x-primary-button>Reject</x-primary-button>
         </div>
     </div>
 </x-app-layout>
