@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Ticket;
-use App\Notifications\TicketUpdatedNotification;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
+use App\Jobs\SendTicketUpdatedNotificationJob;
+use App\Notifications\TicketUpdatedNotification;
 
 class TicketController extends Controller
 {
@@ -75,7 +76,8 @@ class TicketController extends Controller
             // $user = User::find($ticket->user_id);
             // $user->notify(new TicketUpdatedNotification($ticket));
             // return (new TicketUpdatedNotification($ticket))->toMail($user);
-            $ticket->user->notify(new TicketUpdatedNotification($ticket));
+            // $ticket->user->notify(new TicketUpdatedNotification($ticket));
+            dispatch(new SendTicketUpdatedNotificationJob($ticket));
         }
 
         if ($request->file('attachment')) {
