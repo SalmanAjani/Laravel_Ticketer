@@ -40,11 +40,29 @@
                     </tr>
                 </tbody>
             </table>
+            @if (auth()->user()->isAdmin)
+                @if ($ticket->status !== 'resolved' && $ticket->status !== 'rejected')
+                    <div class="mt-4 flex gap-2">
+                        <form action="{{ route('ticket.update', $ticket->id) }}" method="post">
+                            @csrf
+                            @method('patch')
+                            <input type="hidden" name="status" value="resolved">
+                            <x-primary-button>Resolve</x-primary-button>
+                        </form>
+                        <form action="{{ route('ticket.update', $ticket->id) }}" method="post">
+                            @csrf
+                            @method('patch')
+                            <input type="hidden" name="status" value="rejected">
+                            <x-primary-button>Reject</x-primary-button>
+                        </form>
+                    </div>
+                @endif
+            @else
+                <p class="text-left ml-5">Status: <span class="text-red-500">{{ strtoupper($ticket->status) }}</span>
+                </p>
 
+            @endif
         </div>
-        <div class="mt-4 text-left w-6/12">
-            <x-primary-button>Accept</x-primary-button>
-            <x-primary-button>Reject</x-primary-button>
-        </div>
+
     </div>
 </x-app-layout>

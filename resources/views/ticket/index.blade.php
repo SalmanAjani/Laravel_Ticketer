@@ -16,7 +16,7 @@
                     </thead>
                     <tbody>
                         @foreach ($tickets as $ticket)
-                            <tr class="border-2 border-black">
+                            <tr>
                                 <td class="p-2">
                                     <a href="{{ route('ticket.show', $ticket->id) }}">
                                         {{ $ticket->title }}
